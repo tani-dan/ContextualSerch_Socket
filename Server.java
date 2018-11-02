@@ -24,10 +24,12 @@ public class Server {
                 if(entry.equalsIgnoreCase("quit")){
                     System.out.println("Client initialize connections suicide ...");
                     out.println("Server reply - " + entry + " - OK");
+                    out.println("End.");
                     break;
                 }
                 else if(entry.equalsIgnoreCase("who")){
                     out.println("Server reply - Tanya Zvereva, Variant_10 - Context search");
+                    out.println("End.");
                     System.out.println("Server reply - " + "Tanya Zvereva, Variant_10 - Context search" + " - OK");
                 }
                 else if(entry.toLowerCase().contains("find:")) {
@@ -47,6 +49,7 @@ public class Server {
                             System.out.println(String.format("Server reply - '" + text + "' was found at position %d on line %d", pair.getValue(), pair.getKey()));
                             out.println(String.format("Server reply - \"" + text + "\" was found at position %d on line %d", pair.getValue(), pair.getKey()));
                         }
+                        out.println("End.");
                     }
                 }
                 else{

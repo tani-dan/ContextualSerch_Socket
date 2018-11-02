@@ -25,7 +25,7 @@ public class Client {
                         break;
                     }
                     String sin;
-                    while(!(sin = in.readLine()).isEmpty()){
+                    while(!(sin = in.readLine()).equals("End.")){
                         System.out.println(sin);
                     }
             }
