@@ -3,6 +3,7 @@ package com.company;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,9 +11,11 @@ public class Server {
 
     private static final int port = 10252;
     private static String filepath = "text.txt";
+    private static String lineSeparator = System.getProperty("line.separator");
 
     public static void main(String[] args) {
-        try (ServerSocket server = new ServerSocket(port)) {
+        try (ServerSocket server = new ServerSocket(port);
+             FileWriter writer = new FileWriter("report.txt", true)) {
             Socket client = server.accept();
             System.out.print("Connection accepted.");
 
@@ -25,15 +28,18 @@ public class Server {
                 if (entry.equalsIgnoreCase("quit")) {
                     out.println("Server reply - " + entry + " - OK");
                     out.println("End.");
+                    writer.write((new Date()).toString() + " : " + "Server reply - " + entry + " - OK" + lineSeparator);
                     System.out.println("Client initialize connections suicide ...");
                     break;
                 } else if (entry.equalsIgnoreCase("who")) {
                     out.println("Server reply - Tanya Zvereva, Variant_10 - Context search");
                     out.println("End.");
+                    writer.write((new Date()).toString() + " : " + "Server reply - Tanya Zvereva, Variant_10 - Context search" + lineSeparator);
                     System.out.println("Server reply - " + "Tanya Zvereva, Variant_10 - Context search");
                 } else if (entry.toLowerCase().contains("file to read:")) {
                     filepath = entry.split(":")[1].trim();
                     out.println("Server reply " + entry + " - OK");
+                    writer.write((new Date()).toString() + " : " + "Server reply " + entry + " - OK" + lineSeparator);
                     out.println("End.");
                 } else if (entry.toLowerCase().contains("find:")) {
                     String text = entry.split(":")[1].trim();
@@ -43,22 +49,27 @@ public class Server {
                         if (map.isEmpty()) {
                             out.println("Server reply " + entry + " - no matches");
                             out.println("End.");
+                            writer.write((new Date()).toString() + " : " + "Server reply " + entry + " - no matches" + lineSeparator);
                             System.out.println("Server reply " + entry + " - no matches");
                         } else {
                             for (Object o : map.entrySet()) {
                                 Map.Entry pair = (Map.Entry) o;
-                                System.out.println(String.format("Server reply - '" + text + "' was found at position %d on line %d", pair.getValue(), pair.getKey()));
                                 out.println(String.format("Server reply - \"" + text + "\" was found at position %d on line %d", pair.getValue(), pair.getKey()));
+                                writer.write((new Date()).toString() + " : " + String.format("Server reply - \"" + text + "\" was found at position %d on line %d", pair.getValue(), pair.getKey()) + lineSeparator);
+                                System.out.println(String.format("Server reply - '" + text + "' was found at position %d on line %d", pair.getValue(), pair.getKey()));
                             }
                             out.println("End.");
                         }
                     } catch (IOException e) {
                         out.println("Server reply - file" + filepath + " - isn't exist");
                         out.println("End.");
+                        writer.write((new Date()).toString() + " : " + "Server reply - file" + filepath + " - isn't exist" + lineSeparator);
                         System.out.println("Server reply - file" + filepath + " - isn't exist");
                     }
                 } else {
                     out.println("Server reply " + entry + " - False - command doesn't exist");
+                    out.println("End.");
+                    writer.write((new Date()).toString() + " : " + "Server reply " + entry + " - False - command doesn't exist" + lineSeparator);
                     System.out.println("Command " + entry + " doesn't exist");
                 }
 
