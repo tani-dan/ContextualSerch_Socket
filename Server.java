@@ -29,17 +29,20 @@ public class Server {
                     out.println("Server reply - " + entry + " - OK");
                     out.println("End.");
                     writer.write((new Date()).toString() + " : " + "Server reply - " + entry + " - OK" + lineSeparator);
+                    writer.flush();
                     System.out.println("Client initialize connections suicide ...");
                     break;
                 } else if (entry.equalsIgnoreCase("who")) {
                     out.println("Server reply - Tanya Zvereva, Variant_10 - Context search");
                     out.println("End.");
                     writer.write((new Date()).toString() + " : " + "Server reply - Tanya Zvereva, Variant_10 - Context search" + lineSeparator);
+                    writer.flush();
                     System.out.println("Server reply - " + "Tanya Zvereva, Variant_10 - Context search");
                 } else if (entry.toLowerCase().contains("file to read:")) {
                     filepath = entry.split(":")[1].trim();
                     out.println("Server reply " + entry + " - OK");
                     writer.write((new Date()).toString() + " : " + "Server reply " + entry + " - OK" + lineSeparator);
+                    writer.flush();
                     out.println("End.");
                 } else if (entry.toLowerCase().contains("find:")) {
                     String text = entry.split(":")[1].trim();
@@ -50,12 +53,14 @@ public class Server {
                             out.println("Server reply " + entry + " - no matches");
                             out.println("End.");
                             writer.write((new Date()).toString() + " : " + "Server reply " + entry + " - no matches" + lineSeparator);
+                            writer.flush();
                             System.out.println("Server reply " + entry + " - no matches");
                         } else {
                             for (Object o : map.entrySet()) {
                                 Map.Entry pair = (Map.Entry) o;
                                 out.println(String.format("Server reply - \"" + text + "\" was found at position %d on line %d", pair.getValue(), pair.getKey()));
                                 writer.write((new Date()).toString() + " : " + String.format("Server reply - \"" + text + "\" was found at position %d on line %d", pair.getValue(), pair.getKey()) + lineSeparator);
+                                writer.flush();
                                 System.out.println(String.format("Server reply - '" + text + "' was found at position %d on line %d", pair.getValue(), pair.getKey()));
                             }
                             out.println("End.");
@@ -64,12 +69,14 @@ public class Server {
                         out.println("Server reply - file" + filepath + " - isn't exist");
                         out.println("End.");
                         writer.write((new Date()).toString() + " : " + "Server reply - file" + filepath + " - isn't exist" + lineSeparator);
+                        writer.flush();
                         System.out.println("Server reply - file" + filepath + " - isn't exist");
                     }
                 } else {
                     out.println("Server reply " + entry + " - False - command doesn't exist");
                     out.println("End.");
                     writer.write((new Date()).toString() + " : " + "Server reply " + entry + " - False - command doesn't exist" + lineSeparator);
+                    writer.flush();
                     System.out.println("Command " + entry + " doesn't exist");
                 }
 

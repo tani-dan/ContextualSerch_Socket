@@ -22,7 +22,7 @@ public class Client {
                 out.println(clientCommand);
                 System.out.println("Client sent message \"" + clientCommand + "\" to server.");
                 writer.write((new Date()).toString() + " : " + "Client sent message \"" + clientCommand + "\" to server." + lineSeparator);
-
+                writer.flush();
                 if (clientCommand.equalsIgnoreCase("quit")) {
                     System.out.println("Client kill connections");
                     String sin = in.readLine();
