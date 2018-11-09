@@ -1,0 +1,20 @@
+Mon Nov 05 08:55:37 EET 2018 : Server reply - Tanya Zvereva, Variant_10 - Context search
+Mon Nov 05 08:55:38 EET 2018 : Client sent message "who" to server.
+Mon Nov 05 08:55:47 EET 2018 : Client sent message "find:he" to server.
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 70 on line 16
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 12 on line 1
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 79 on line 4
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 18 on line 6
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 3 on line 7
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 37 on line 8
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 128 on line 10
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 8 on line 11
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 13 on line 12
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 60 on line 14
+Mon Nov 05 08:55:47 EET 2018 : Server reply - "he" was found at position 11 on line 15
+Mon Nov 05 08:56:33 EET 2018 : Client sent message "file to read: textRus.txt" to server.
+Mon Nov 05 08:56:33 EET 2018 : Server reply file to read: textRus.txt - OK
+Mon Nov 05 08:56:43 EET 2018 : Client sent message "find: товарищи" to server.
+Mon Nov 05 08:56:43 EET 2018 : Server reply find: товарищи - no matches
+Mon Nov 05 08:56:58 EET 2018 : Client sent message "quit" to server.
+Mon Nov 05 08:56:58 EET 2018 : Server reply - quit - OK
